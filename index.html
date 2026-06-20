@@ -84,7 +84,25 @@
   <div class="hero-btns">
     <a href="#payment" class="btn-primary">📲 Subscribe Now</a>
     <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com" target="_blank" class="btn-secondary">▶ Try Free Demo</a>
-  </div>
+</div>
+<div style="margin-top:1rem;">
+    <input type="email" id="subscriberEmail" placeholder="Enter your registered Gmail..."
+        style="padding:0.7rem 1.2rem; border-radius:50px; border:1.5px solid rgba(0,212,255,0.4);
+               background:rgba(0,212,255,0.08); color:white; font-size:0.95rem; width:280px; outline:none;">
+    <button onclick="openTool()"
+        style="background:rgba(0,212,255,0.15); border:1.5px solid rgba(0,212,255,0.4);
+               color:#00d4ff; padding:0.7rem 1.5rem; border-radius:50px;
+               font-weight:700; font-size:0.95rem; cursor:pointer; margin-left:0.5rem;">
+        🔑 Open My Tool →
+    </button>
+</div>
+<script>
+function openTool() {
+    var email = document.getElementById('subscriberEmail').value.trim();
+    if (!email) { alert('Please enter your registered Gmail address.'); return; }
+    window.open('https://recosuite-app.streamlit.app/?email=' + encodeURIComponent(email), '_blank');
+}
+</script>
 </div>
 
 <div class="stats">
