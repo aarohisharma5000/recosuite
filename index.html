@@ -83,32 +83,18 @@
   <p>Excel mein ghanton ka kaam ab minutes mein ho jaata hai. RecoSuite — ek powerful tool jo do files ko automatically match karta hai aur instantly results deta hai.</p>
   <div class="hero-btns">
     <a href="#payment" class="btn-primary">📲 Subscribe Now</a>
-    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com" target="_blank" class="btn-secondary">▶ Try Free Demo</a>
-</div>
-<div style="margin-top:1.5rem; display:flex; flex-direction:column; align-items:center; gap:0.8rem;">
-  <div style="display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center;">
-    <input type="email" id="subscriberEmail"
-      placeholder="📧 Your registered Gmail..."
-      style="padding:0.7rem 1.2rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:240px;outline:none;">
-    <input type="password" id="subscriberPin"
-      placeholder="🔐 PIN"
-      maxlength="6"
-      style="padding:0.7rem 1rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:100px;outline:none;">
-    <button onclick="openTool()"
-      style="background:rgba(0,212,255,0.15);border:1.5px solid rgba(0,212,255,0.4);color:#00d4ff;padding:0.7rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.9rem;cursor:pointer;">
-      🔑 Open My Tool →
-    </button>
+    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank" class="btn-secondary">▶ Try Free Demo</a>
   </div>
-  <p style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Already subscribed? Enter your Gmail + PIN to access your tool.</p>
-</div>
-<script>
-function openTool() {
+  <div style="margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;"><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;"><input type="email" id="subscriberEmail" placeholder="📧 Your registered Gmail..." style="padding:0.7rem 1.2rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:240px;outline:none;"><input type="password" id="subscriberPin" placeholder="🔐 PIN" maxlength="6" style="padding:0.7rem 1rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:100px;outline:none;"><button onclick="openTool()" style="background:rgba(0,212,255,0.15);border:1.5px solid rgba(0,212,255,0.4);color:#00d4ff;padding:0.7rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.9rem;cursor:pointer;">🔑 Open My Tool →</button></div><p style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Already subscribed? Enter your Gmail + PIN to access your tool.</p></div>
+  <script>
+  function openTool() {
     var email = document.getElementById('subscriberEmail').value.trim();
     var pin   = document.getElementById('subscriberPin').value.trim();
     if (!email) { alert('Please enter your registered Gmail address.'); return; }
     if (!pin)   { alert('Please enter your PIN.'); return; }
     window.open('https://recosuite-app.streamlit.app/?email=' + encodeURIComponent(email) + '&pin=' + encodeURIComponent(pin), '_blank');
-}</script>
+  }
+  </script>
 </div>
 
 <div class="stats">
@@ -242,7 +228,7 @@ function openTool() {
   <div style="font-size:1.4rem; font-weight:800; color:var(--cyan); margin-bottom:0.5rem;">RecoSuite</div>
   <p>Built with ❤️ by <strong>Aarohi Sharma</strong> — Finance Ops Professional</p>
   <p style="margin-top:0.5rem;">
-    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com" target="_blank">🔗 Try Free Demo</a>
+    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank">🔗 Try Free Demo</a>
     &nbsp;|&nbsp;
     <a href="support.html">📧 Email Support</a>
     &nbsp;|&nbsp;
