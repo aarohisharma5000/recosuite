@@ -4,6 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RecoSuite — Smart Reconciliation Tool</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DGTEPXY5G6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DGTEPXY5G6');
+
+  // ── Custom Event Tracking ──
+  function trackEvent(eventName, label) {
+    gtag('event', eventName, {
+      'event_category': 'RecoSuite',
+      'event_label': label
+    });
+  }
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,7 +90,7 @@
 
 <nav>
   <div class="nav-logo">Reco<span>Suite</span></div>
-  <a href="#payment" class="nav-cta">Subscribe Now →</a>
+  <a href="#payment" class="nav-cta" onclick="trackEvent('click', 'Nav Subscribe Now')">Subscribe Now →</a>
 </nav>
 
 <div class="hero">
@@ -82,8 +98,8 @@
   <h1>Reconciliation<br><span class="accent">2 Lakh Rows.</span><br>2 Minutes.</h1>
   <p>Excel mein ghanton ka kaam ab minutes mein ho jaata hai. RecoSuite — ek powerful tool jo do files ko automatically match karta hai aur instantly results deta hai.</p>
   <div class="hero-btns">
-    <a href="#payment" class="btn-primary">📲 Subscribe Now</a>
-    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank" class="btn-secondary">▶ Try Free Demo</a>
+    <a href="#payment" class="btn-primary" onclick="trackEvent('click', 'Hero Subscribe Now')">📲 Subscribe Now</a>
+    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank" class="btn-secondary" onclick="trackEvent('click', 'Try Free Demo')">▶ Try Free Demo</a>
   </div>
   <div style="margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;"><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;"><input type="email" id="subscriberEmail" placeholder="📧 Your registered Gmail..." style="padding:0.7rem 1.2rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:240px;outline:none;"><input type="password" id="subscriberPin" placeholder="🔐 PIN" maxlength="6" style="padding:0.7rem 1rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:100px;outline:none;"><button onclick="openTool()" style="background:rgba(0,212,255,0.15);border:1.5px solid rgba(0,212,255,0.4);color:#00d4ff;padding:0.7rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.9rem;cursor:pointer;">🔑 Open My Tool →</button></div><p style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Already subscribed? Enter your Gmail + PIN to access your tool.</p></div>
   <script>
@@ -92,6 +108,7 @@
     var pin   = document.getElementById('subscriberPin').value.trim();
     if (!email) { alert('Please enter your registered Gmail address.'); return; }
     if (!pin)   { alert('Please enter your PIN.'); return; }
+    trackEvent('click', 'Open My Tool - ' + email);
     window.open('https://recosuite-app.streamlit.app/?email=' + encodeURIComponent(email) + '&pin=' + encodeURIComponent(pin), '_blank');
   }
   </script>
@@ -217,7 +234,7 @@
         <div class="step-item"><div class="step-num">2</div><div>WhatsApp pe message karo: <strong style="color:white">"RecoSuite - [aapka Gmail] - [Basic/Pro]"</strong></div></div>
         <div class="step-item"><div class="step-num">3</div><div>30 minutes mein aapka personal access link WhatsApp pe aa jaayega ✅</div></div>
       </div>
-      <a href="https://wa.me/919818799197?text=RecoSuite%20Subscribe%20-%20" target="_blank" class="wa-btn">
+      <a href="https://wa.me/919818799197?text=RecoSuite%20Subscribe%20-%20" target="_blank" class="wa-btn" onclick="trackEvent('click', 'WhatsApp Subscribe')">
         💬 WhatsApp karo: 9818799197
       </a>
     </div>
