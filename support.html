@@ -181,7 +181,7 @@
       `---\nSent from RecoSuite Support Page`
     );
 
-    window.location.href = `mailto:aarohisharma5000@gmail.com?subject=${subject}&body=${body}`;
+    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=aarohisharma5000@gmail.com&su=${subject}&body=${body}`, '_blank');
 
     setTimeout(() => {
       document.getElementById('formCard').style.display = 'none';
