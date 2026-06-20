@@ -87,6 +87,9 @@
 </div>
 <div style="margin-top:1rem;">
     <input type="email" id="subscriberEmail" placeholder="Enter your registered Gmail..."
+    <input type="password" id="subscriberPin" placeholder="Enter PIN..." maxlength="6"
+      style="padding:0.7rem 1.2rem; border-radius:50px; border:1.5px solid rgba(0,212,255,0.4);
+             background:rgba(0,212,255,0.08); color:white; font-size:0.95rem; width:150px; outline:none; margin-left:0.5rem;">  
         style="padding:0.7rem 1.2rem; border-radius:50px; border:1.5px solid rgba(0,212,255,0.4);
                background:rgba(0,212,255,0.08); color:white; font-size:0.95rem; width:280px; outline:none;">
     <button onclick="openTool()"
@@ -99,10 +102,11 @@
 <script>
 function openTool() {
     var email = document.getElementById('subscriberEmail').value.trim();
+    var pin   = document.getElementById('subscriberPin').value.trim();
     if (!email) { alert('Please enter your registered Gmail address.'); return; }
-    window.open('https://recosuite-app.streamlit.app/?email=' + encodeURIComponent(email), '_blank');
-}
-</script>
+    if (!pin)   { alert('Please enter your PIN.'); return; }
+    window.open('https://recosuite-app.streamlit.app/?email=' + encodeURIComponent(email) + '&pin=' + encodeURIComponent(pin), '_blank');
+}</script>
 </div>
 
 <div class="stats">
