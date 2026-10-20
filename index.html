@@ -90,6 +90,16 @@
   .how-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
   footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; line-height: 1.8; }
   footer a { color: var(--cyan); text-decoration: none; }
+  /* ── Demo video section ── */
+  .demo-video { padding: 1rem 1.5rem 4rem; text-align: center; }
+  .demo-video h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+  .demo-video .dv-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.2rem; }
+  .dv-toggle { display: inline-flex; gap: 0.4rem; padding: 0.3rem; border: 1px solid var(--border); border-radius: 50px; background: var(--card); margin-bottom: 1.2rem; }
+  .dv-toggle button { font-family: inherit; font-size: 0.9rem; font-weight: 700; padding: 0.5rem 1.3rem; border-radius: 50px; border: none; cursor: pointer; background: transparent; color: var(--muted); }
+  .dv-toggle button.active { background: var(--cyan); color: var(--navy); }
+  .dv-frame { max-width: 900px; margin: 0 auto; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.45), 0 0 40px rgba(0,212,255,0.08); background: #000; }
+  .dv-frame video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #000; }
+  .dv-cta { margin-top: 1.6rem; }
 </style>
 </head>
 <body>
@@ -120,6 +130,45 @@
   </script>
 
 </div>
+
+<section class="demo-video" id="demo-video">
+  <h2>🎬 2 minute mein dekho kaise kaam karta hai</h2>
+  <p class="dv-sub">Do files upload karo, key column chuno, Run Reco — bas.</p>
+  <div class="dv-toggle" role="group" aria-label="Video language">
+    <button type="button" class="active" data-lang="hi" aria-pressed="true" onclick="setDemoLang('hi')">Hindi</button>
+    <button type="button" data-lang="en" aria-pressed="false" onclick="setDemoLang('en')">English</button>
+  </div>
+  <div class="dv-frame">
+    <video id="demoVideo" controls playsinline preload="metadata" poster="videos/poster.jpg" src="videos/demo_hi.mp4">
+      Aapka browser video support nahi karta. <a href="videos/demo_hi.mp4">Video download karo</a>.
+    </video>
+  </div>
+  <div class="dv-cta">
+    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank" class="btn-secondary" onclick="trackEvent('click', 'Video Try Free Demo')">▶ Try Free Demo</a>
+  </div>
+  <script>
+  (function () {
+    var v = document.getElementById('demoVideo');
+    var LANG = { hi: 'Hindi', en: 'English' };
+    var current = 'hi';
+    window.setDemoLang = function (lang) {
+      if (lang === current) return;
+      current = lang;
+      v.pause();
+      v.src = 'videos/demo_' + lang + '.mp4';
+      v.load();
+      var btns = document.querySelectorAll('.dv-toggle button');
+      for (var i = 0; i < btns.length; i++) {
+        var on = btns[i].getAttribute('data-lang') === lang;
+        btns[i].classList.toggle('active', on);
+        btns[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+      }
+      trackEvent('click', 'Video Language ' + LANG[lang]);
+    };
+    v.addEventListener('play', function () { trackEvent('video_play', 'Video Play ' + LANG[current]); });
+  })();
+  </script>
+</section>
 
 <div class="stats">
   <div class="stat"><div class="stat-num">2 Lakh+</div><div class="stat-label">Rows processed instantly</div></div>
