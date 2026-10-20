@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RecoSuite — Smart Reconciliation Tool</title>
+<meta name="description" content="RecoSuite — 2 lakh rows ka reconciliation 2 minute mein. CSV, Excel, XLSB files upload karo, Matched / Mismatched / Only-in results aur Excel + PDF reports pao. Browser mein chalta hai, koi installation nahi.">
+<meta property="og:title" content="RecoSuite — Smart Reconciliation Tool">
+<meta property="og:description" content="2 lakh rows. 2 minutes. Excel/CSV reconciliation for finance &amp; ops teams — browser mein, koi installation ya coding nahi. Free demo try karo.">
+<meta property="og:url" content="https://aarohisharma5000.github.io/recosuite/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DGTEPXY5G6"></script>
 <script>
@@ -101,14 +107,14 @@
     <a href="#payment" class="btn-primary" onclick="trackEvent('click', 'Hero Subscribe Now')">📲 Subscribe Now</a>
     <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank" class="btn-secondary" onclick="trackEvent('click', 'Try Free Demo')">▶ Try Free Demo</a>
   </div>
-  <div style="margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;"><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;"><input type="email" id="subscriberEmail" placeholder="📧 Your registered Gmail..." onkeydown="if(event.key==='Enter') openTool()" style="padding:0.7rem 1.2rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:240px;outline:none;"><input type="password" id="subscriberPin" placeholder="🔐 PIN" maxlength="6" onkeydown="if(event.key==='Enter') openTool()" style="padding:0.7rem 1rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:100px;outline:none;"><button onclick="openTool()" style="background:rgba(0,212,255,0.15);border:1.5px solid rgba(0,212,255,0.4);color:#00d4ff;padding:0.7rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.9rem;cursor:pointer;">🔑 Open Tool →</button></div><p style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Already subscribed? Enter your Gmail + PIN to access your tool.</p></div>
+  <div style="margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:0.8rem;"><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;"><input type="email" id="subscriberEmail" placeholder="📧 Your registered Gmail..." onkeydown="if(event.key==='Enter') openTool()" style="padding:0.7rem 1.2rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:240px;outline:none;"><input type="password" id="subscriberPin" placeholder="🔐 PIN" maxlength="6" onkeydown="if(event.key==='Enter') openTool()" style="padding:0.7rem 1rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:100px;outline:none;"><button onclick="openTool()" style="background:rgba(0,212,255,0.15);border:1.5px solid rgba(0,212,255,0.4);color:#00d4ff;padding:0.7rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.9rem;cursor:pointer;">🔑 Open Tool →</button></div><p style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Already subscribed? Enter your Gmail + PIN to access your tool.</p><p style="color:rgba(255,255,255,0.4);font-size:0.75rem;">⏳ Pehli baar khulne mein 30-60 sec lag sakte hain — agar "app has gone to sleep" dikhe toh wake-up button dabao aur thoda wait karo.</p></div>
   <script>
   function openTool() {
     var email = document.getElementById('subscriberEmail').value.trim();
     var pin   = document.getElementById('subscriberPin').value.trim();
     if (!email) { alert('Please enter your registered Gmail address.'); return; }
     if (!pin)   { alert('Please enter your PIN.'); return; }
-    trackEvent('click', 'Open My Tool - ' + email);
+    trackEvent('click', 'Open My Tool');
     window.open('https://recosuite-app.streamlit.app/?email=' + encodeURIComponent(email) + '&pin=' + encodeURIComponent(pin), '_blank');
   }
   </script>
@@ -118,7 +124,7 @@
 <div class="stats">
   <div class="stat"><div class="stat-num">2 Lakh+</div><div class="stat-label">Rows processed instantly</div></div>
   <div class="stat"><div class="stat-num">2 min</div><div class="stat-label">Vs hours of manual work</div></div>
-  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Data stays local &amp; private</div></div>
+  <div class="stat"><div class="stat-num">🔒</div><div class="stat-label">Secure session — files hum save nahi karte</div></div>
   <div class="stat"><div class="stat-num">0</div><div class="stat-label">Coding required</div></div>
 </div>
 
@@ -144,7 +150,7 @@
       <div class="card"><div class="card-icon">📂</div><div class="card-title">Smart File Matching</div><div class="card-desc">CSV, Excel, XLSB — koi bhi format upload karo. Tool automatically columns detect karta hai aur match karta hai.</div></div>
       <div class="card"><div class="card-icon">🧠</div><div class="card-title">DuckDB Big File Engine</div><div class="card-desc">1 lakh, 2 lakh rows? Koi problem nahi. DuckDB engine large files ko bhi lightning fast process karta hai.</div></div>
       <div class="card"><div class="card-icon">📊</div><div class="card-title">Instant Results + Download</div><div class="card-desc">Matched, Mismatched, Only in File 1, Only in File 2 — sab categories mein sorted results. Excel mein download karo.</div></div>
-      <div class="card"><div class="card-icon">🔒</div><div class="card-title">100% Data Privacy</div><div class="card-desc">Aapka data aapki machine pe hi rehta hai. Koi external server par nahi jaata. Finance data bilkul safe hai.</div></div>
+      <div class="card"><div class="card-icon">🔒</div><div class="card-title">Data Privacy</div><div class="card-desc">Files secure cloud session mein process hoti hain — hum aapki files save nahi karte aur kisi ke saath share nahi karte. Reports sirf aapke session mein bante hain.</div></div>
       <div class="card"><div class="card-icon">🎯</div><div class="card-title">COALESCE Key Logic</div><div class="card-desc">Multi-column fallback key matching. Scientific notation, duplicates, filters — sab handle karta hai automatically.</div></div>
       <div class="card"><div class="card-icon">📄</div><div class="card-title">PDF Summary Report</div><div class="card-desc">Ek click mein PDF summary bana lo — counts, sums, categories sab. Management ko share karo seedha.</div></div>
     </div>
@@ -156,7 +162,7 @@
     <div class="section-tag">🛠 How It Works</div>
     <h2 class="section-title">4 steps — bas itna hi</h2>
     <div class="how-grid">
-      <div class="how-step"><div class="how-icon">🔗</div><div class="how-title">1. Link kholo</div><div class="how-desc">Apna subscription link open karo browser mein</div></div>
+      <div class="how-step"><div class="how-icon">🔐</div><div class="how-title">1. Login karo</div><div class="how-desc">Upar apna Gmail + PIN daalo aur "Open Tool" dabao — ya "Try Free Demo" click karo</div></div>
       <div class="how-step"><div class="how-icon">📤</div><div class="how-title">2. Files upload karo</div><div class="how-desc">Dono sides pe apni CSV ya Excel files upload karo</div></div>
       <div class="how-step"><div class="how-icon">🔑</div><div class="how-title">3. Key column chuno</div><div class="how-desc">Match key select karo — LAN, Transaction ID, Account No</div></div>
       <div class="how-step"><div class="how-icon">⚡</div><div class="how-title">4. Results lo!</div><div class="how-desc">Instant results + Excel download. Done!</div></div>
@@ -178,18 +184,18 @@
           <li><span class="tick">✓</span> Up to 100 rows only</li>
           <li><span class="tick">✓</span> Basic file matching</li>
           <li><span class="tick">✓</span> CSV &amp; Excel support</li>
-          <li><span class="cross">✗</span> No report download</li>
+          <li><span class="cross">✗</span> No downloads (Excel / CSV / PDF)</li>
           <li><span class="cross">✗</span> No big file mode</li>
           <li><span class="cross">✗</span> No email support</li>
         </ul>
       </div>
-      <div class="plan featured">
-        <div class="plan-badge">⭐ Most Popular</div>
+      <div class="plan">
         <div class="plan-name">Basic</div>
         <div class="plan-price">₹299 <span>/ 6 months</span></div>
         <div class="plan-validity">Just ₹50/month — 6 mahine ka access</div>
         <ul class="plan-features">
-          <li><span class="tick">✓</span> Files up to 250 MB</li>
+          <li><span class="tick">✓</span> Up to 2.5 lakh rows per file</li>
+          <li><span class="tick">✓</span> Files up to 200 MB per file</li>
           <li><span class="tick">✓</span> Full matching engine</li>
           <li><span class="tick">✓</span> Excel report download</li>
           <li><span class="tick">✓</span> DuckDB big file mode</li>
@@ -197,13 +203,14 @@
           <li><span class="tick">✓</span> Email support</li>
         </ul>
       </div>
-      <div class="plan">
-        <div class="plan-badge" style="background: var(--gold); color: #1a1a00;">🏆 Best Value</div>
+      <div class="plan featured">
+        <div class="plan-badge">⭐ Most Popular · Best Value</div>
         <div class="plan-name">Pro</div>
         <div class="plan-price">₹499 <span>/ year</span></div>
         <div class="plan-validity">Just ₹42/month — Full 1 saal ka access</div>
         <ul class="plan-features">
-          <li><span class="tick">✓</span> Files up to 250 MB</li>
+          <li><span class="tick">✓</span> Unlimited rows</li>
+          <li><span class="tick">✓</span> Files up to 200 MB per file</li>
           <li><span class="tick">✓</span> Full matching engine</li>
           <li><span class="tick">✓</span> Excel report download</li>
           <li><span class="tick">✓</span> DuckDB big file mode</li>
@@ -220,7 +227,7 @@
     <div style="text-align:center">
       <div class="section-tag">📲 Subscribe Now</div>
       <h2 class="section-title">Payment karo, access pao</h2>
-      <p class="section-sub" style="margin: 0 auto">Sirf 3 steps — QR scan, WhatsApp message, aur aapka private link ready!</p>
+      <p class="section-sub" style="margin: 0 auto">Sirf 3 steps — QR scan, WhatsApp message, aur aapka Gmail + PIN access ready!</p>
     </div>
     <div class="payment-box">
       <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:0.3rem;">Scan &amp; Pay</h3>
@@ -233,7 +240,7 @@
       <div class="steps-list">
         <div class="step-item"><div class="step-num">1</div><div>QR scan karo aur apna plan select karke payment karo (₹299 ya ₹499)</div></div>
         <div class="step-item"><div class="step-num">2</div><div>WhatsApp pe message karo: <strong style="color:white">"RecoSuite - [aapka Gmail] - [Basic/Pro]"</strong> — number: <strong style="color:white">9818799197</strong> &nbsp;|&nbsp; UPI: <strong style="color:white">9818799197@pthdfc</strong> &nbsp;|&nbsp; Basic: <strong style="color:#00e676">₹299</strong> &nbsp;|&nbsp; Pro: <strong style="color:#ffd600">₹499</strong></div></div>
-        <div class="step-item"><div class="step-num">3</div><div>30 minutes mein aapka personal access link WhatsApp pe aa jaayega ✅</div></div>
+        <div class="step-item"><div class="step-num">3</div><div>30 minutes mein aapka login PIN WhatsApp pe aa jaayega — phir upar Gmail + PIN se tool kholo ✅</div></div>
       </div>
       <a href="https://wa.me/919818799197?text=RecoSuite%20Subscribe%20-%20" target="_blank" class="wa-btn" onclick="trackEvent('click', 'WhatsApp Subscribe')">
         💬 WhatsApp karo: 9818799197
