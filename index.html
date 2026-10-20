@@ -139,8 +139,8 @@
     <button type="button" data-lang="en" aria-pressed="false" onclick="setDemoLang('en')">English</button>
   </div>
   <div class="dv-frame">
-    <video id="demoVideo" controls playsinline preload="metadata" poster="videos/poster.jpg" src="videos/demo_hi.mp4">
-      Aapka browser video support nahi karta. <a href="videos/demo_hi.mp4">Video download karo</a>.
+    <video id="demoVideo" controls playsinline preload="metadata" poster="poster.jpg" src="demo_hi.mp4">
+      Aapka browser video support nahi karta. <a href="demo_hi.mp4">Video download karo</a>.
     </video>
   </div>
   <div class="dv-cta">
@@ -155,7 +155,7 @@
       if (lang === current) return;
       current = lang;
       v.pause();
-      v.src = 'videos/demo_' + lang + '.mp4';
+      v.src = 'demo_' + lang + '.mp4';
       v.load();
       var btns = document.querySelectorAll('.dv-toggle button');
       for (var i = 0; i < btns.length; i++) {
