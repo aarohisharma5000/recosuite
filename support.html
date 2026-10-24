@@ -94,7 +94,7 @@
     <div class="card-title">📝 Raise a Support Ticket</div>
 
     <div class="form-group">
-      <label>Your Gmail (registered with RecoSuite)</label>
+      <label>Your Email <span style="opacity:.7;font-weight:400">(use your RecoSuite Gmail if you are already a user)</span></label>
       <input type="email" id="userEmail" placeholder="yourname@gmail.com">
     </div>
 
@@ -102,6 +102,7 @@
       <label>Issue Type</label>
       <select id="issueType">
         <option value="">Select issue type...</option>
+        <option value="New Enquiry">🙋 New Enquiry — pricing, demo or plans (not a user yet)</option>
         <option value="Access Issue">🔐 Access Issue — can't login / link not working</option>
         <option value="Tool Error">⚠️ Tool Error — error while running reconciliation</option>
         <option value="Wrong Results">📊 Wrong Results — unexpected output</option>
@@ -237,7 +238,7 @@
   }
 
   function fallbackText(f) {
-    return `RecoSuite Support Request\nIssue ID: ${issueId}\nRegistered Email: ${f.email || "-"}\n` +
+    return `RecoSuite Support Request\nIssue ID: ${issueId}\nEmail: ${f.email || "-"}\n` +
            `Issue Type: ${f.type || "-"}\n\nDescription:\n${f.desc || "-"}`;
   }
 
