@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy — RecoSuite</title>
+<meta name="description" content="RecoSuite privacy: what we store, what we don't, and how to reach us. Uploaded files stay in memory only and are never saved to disk.">
+<meta name="theme-color" content="#0a1628">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+<meta property="og:title" content="RecoSuite — Privacy">
+<meta property="og:description" content="What RecoSuite stores, what it doesn't, and how to reach us.">
+<meta property="og:url" content="https://aarohisharma5000.github.io/recosuite/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RecoSuite">
+<meta property="og:image" content="https://aarohisharma5000.github.io/recosuite/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aarohisharma5000.github.io/recosuite/og-image.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--navy:#0a1628;--cyan:#00d4ff;--muted:#8ba3c7;--card:#111d35;--border:rgba(0,212,255,0.15);--green:#00e676;}
+  body{font-family:'Inter',sans-serif;background:var(--navy);color:#fff;min-height:100vh;line-height:1.65;}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;border-bottom:1px solid var(--border);background:rgba(10,22,40,0.95);}
+  .nav-logo{font-size:1.4rem;font-weight:900;color:var(--cyan);text-decoration:none;}
+  .nav-logo span{color:#fff;}
+  .nav-back{color:var(--cyan);text-decoration:none;font-size:0.9rem;font-weight:600;}
+  .hero{text-align:center;padding:3.5rem 1.5rem 1.5rem;}
+  .hero-icon{font-size:3rem;margin-bottom:0.8rem;}
+  .hero h1{font-size:clamp(1.8rem,5vw,2.4rem);font-weight:900;margin-bottom:0.6rem;letter-spacing:-0.5px;}
+  .hero p{color:var(--muted);font-size:1rem;max-width:560px;margin:0 auto;}
+  .updated{display:inline-block;margin-top:1rem;background:rgba(0,212,255,0.1);border:1px solid var(--border);color:var(--cyan);font-size:0.8rem;font-weight:600;padding:0.3rem 0.9rem;border-radius:50px;}
+  .container{max-width:760px;margin:1.5rem auto;padding:0 1.25rem 4rem;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.8rem;margin-bottom:1.25rem;}
+  .card h2{font-size:1.1rem;font-weight:800;color:var(--cyan);margin-bottom:0.8rem;display:flex;gap:0.5rem;align-items:center;}
+  .card p,.card li{color:#c9d6ea;font-size:0.95rem;}
+  .card p+p{margin-top:0.7rem;}
+  .card ul{list-style:none;margin-top:0.4rem;}
+  .card li{padding:0.4rem 0 0.4rem 1.6rem;position:relative;border-bottom:1px solid rgba(255,255,255,0.05);}
+  .card li:last-child{border-bottom:none;}
+  .card li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700;}
+  .card li.no::before{content:'✗';color:#ff5252;}
+  .card strong{color:#fff;}
+  .card a{color:var(--cyan);text-decoration:none;font-weight:600;}
+  .summary{border-color:var(--cyan);background:linear-gradient(135deg,rgba(0,212,255,0.08),var(--card));}
+  .summary .lang{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:0.6rem;}
+  .small{font-size:0.85rem !important;color:var(--muted) !important;}
+  footer{text-align:center;padding:2rem;color:var(--muted);font-size:0.8rem;border-top:1px solid rgba(0,212,255,0.1);line-height:1.8;}
+  footer a{color:var(--cyan);text-decoration:none;}
+  @media (max-width:600px){nav{padding:1rem 1.25rem;}.card{padding:1.4rem 1.2rem;}.hero{padding:2.5rem 1.25rem 1rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Reco<span>Suite</span></a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-icon">🔒</div>
+  <h1>Privacy at RecoSuite</h1>
+  <p>Simple words, no legal jargon. What we keep, what we don't, and how to reach us.</p>
+  <div class="updated">Last updated: 25 Oct 2026</div>
+</div>
+
+<div class="container">
+
+  <div class="card summary">
+    <div class="lang">Short mein (Hinglish summary)</div>
+    <ul>
+      <li>Aapki uploaded files sirf memory mein process hoti hain — <strong>disk par kabhi save nahi hoti</strong>, aur hum unhe store nahi karte.</li>
+      <li>Login ke liye hum sirf aapka <strong>email, PIN, plan aur expiry date</strong> ek private Google Sheet mein rakhte hain.</li>
+      <li>Saved templates mein sirf <strong>settings</strong> hoti hain (column names, file-name patterns) — aapki file ka data nahi.</li>
+      <li>Landing page par Google Analytics hai, taaki pata chale kitne log visit karte hain.</li>
+      <li>Payment UPI se hota hai — hum card ya bank details store nahi karte.</li>
+      <li>Koi sawaal? Email ya WhatsApp karo — neeche details hain.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📂 Your uploaded files</h2>
+    <ul>
+      <li>Files you upload to the RecoSuite app are processed <strong>in memory only</strong>, inside your session on the app server.</li>
+      <li>The app <strong>never writes your files or results to disk</strong>, and we do not keep a copy. Reports (Excel, CSV, PDF) are built in memory for your session only.</li>
+      <li>Temporary in-memory copies used to speed things up are <strong>auto-cleared within 30 minutes</strong>. Everything else from your session is cleared when the session ends (for example, when you close the tab or the app restarts).</li>
+      <li>We never look at, share or sell your file data.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>👤 Account details we store</h2>
+    <p>To manage access, we keep a <strong>private Google Sheet</strong> with each subscriber's:</p>
+    <ul>
+      <li>Email address</li>
+      <li>PIN</li>
+      <li>Plan (Free, Basic or Pro)</li>
+      <li>Plan expiry date</li>
+    </ul>
+    <p class="small">For security, wrong-PIN attempts are counted in the app's memory for up to 15 minutes to block guessing. This count is not saved anywhere and resets when the app restarts. After you sign in, the PIN is removed from the browser's address bar.</p>
+  </div>
+
+  <div class="card">
+    <h2>🧩 Saved reconciliation templates</h2>
+    <p>If you save a template, we store it in a separate tab of the same private Google Sheet, linked to your email, <strong>until you delete it</strong>.</p>
+    <p>A template holds <strong>settings only</strong>: key and compare columns, column mapping, tolerance and other options, header rows, sheet names, file-name patterns (with one example file name), and any filter you chose (the column and the values you ticked). It does <strong>not</strong> contain the rows of your files.</p>
+    <p class="small">Templates saved on the public demo account are kept only in that browser session and are not stored in the sheet.</p>
+  </div>
+
+  <div class="card">
+    <h2>📊 Website analytics</h2>
+    <p>This landing page uses <strong>Google Analytics</strong> to count visits and see which buttons are clicked (for example "Try Free Demo" or "Subscribe Now"). Google Analytics uses cookies and gets standard browser information such as your approximate location, device and pages visited. We use it only to improve the page. You can block it with your browser's privacy settings or an ad blocker.</p>
+  </div>
+
+  <div class="card">
+    <h2>🎧 Support tickets</h2>
+    <p>When you send a ticket from the <a href="support.html">support page</a>, we receive your <strong>email address, issue type and message</strong>, plus the ticket ID, the time, and your browser and device type (for example "Chrome 120 / Windows"). This goes into a private Google Sheet and to our support email inbox, so we can reply to you.</p>
+    <p>If you choose <strong>Share Feedback / Review</strong>, we also store your star rating, the name &amp; role you type (optional) and whether you ticked the box allowing us to show it. We show feedback on this website <strong>only if you ticked that box</strong>, and only with the name/role you gave. Ask us any time to remove it.</p>
+    <p>If you contact us on WhatsApp or by email instead, we see what you send us there.</p>
+  </div>
+
+  <div class="card">
+    <h2>💰 Payments</h2>
+    <ul>
+      <li>Payments are made by <strong>UPI</strong> from your own UPI app (Paytm, PhonePe, GPay, BHIM and others).</li>
+      <li class="no">We do <strong>not</strong> collect or store card numbers or bank account details.</li>
+      <li>Like any UPI payment, we can see the payment details our UPI app shows us (such as the payer name, UPI ID and amount), which we use to confirm your plan.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>☁️ Where RecoSuite runs</h2>
+    <ul>
+      <li>The app runs on <strong>Streamlit Community Cloud</strong>.</li>
+      <li>This website is hosted on <strong>GitHub Pages</strong>.</li>
+      <li>Account details, templates and support tickets are kept in <strong>Google Sheets</strong>.</li>
+    </ul>
+    <p class="small">These providers run their own servers and have their own privacy policies.</p>
+  </div>
+
+  <div class="card">
+    <h2>✋ Your choices</h2>
+    <ul>
+      <li>You can delete your saved templates yourself in the app at any time.</li>
+      <li>Ask us to see, correct or delete your account details or support tickets, and we will do it.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📬 Contact</h2>
+    <p>Questions about privacy? Reach Aarohi Sharma:</p>
+    <ul>
+      <li>Email: <a href="mailto:aarohisharma5000@gmail.com">aarohisharma5000@gmail.com</a></li>
+      <li>WhatsApp: <a href="https://wa.me/919818799197" target="_blank" rel="noopener">9818799197</a></li>
+    </ul>
+    <p class="small">If this page changes, we will update the date at the top.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div style="font-size:1.1rem;font-weight:800;color:#00d4ff;margin-bottom:0.5rem;">RecoSuite</div>
+  <p>Built with ❤️ by <strong>Aarohi Sharma</strong> — Finance Ops Professional</p>
+  <p style="margin-top:0.5rem;">
+    <a href="index.html">🏠 Home</a> &nbsp;|&nbsp;
+    <a href="support.html">📧 Support</a> &nbsp;|&nbsp;
+    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank">🔗 Try Free Demo</a>
+  </p>
+  <p style="margin-top:1rem;font-size:0.75rem;color:rgba(139,163,199,0.5);">© 2026 RecoSuite. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

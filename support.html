@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RecoSuite Support</title>
+<meta name="description" content="RecoSuite support — raise a ticket, get a reply within 24 hours. Email or WhatsApp also available.">
+<meta name="theme-color" content="#0a1628">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+<meta property="og:title" content="RecoSuite Support">
+<meta property="og:description" content="Raise a support ticket and get a reply within 24 hours. Email or WhatsApp also available.">
+<meta property="og:url" content="https://aarohisharma5000.github.io/recosuite/support.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RecoSuite">
+<meta property="og:image" content="https://aarohisharma5000.github.io/recosuite/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aarohisharma5000.github.io/recosuite/og-image.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -55,6 +70,20 @@
   .error-title{font-size:1.2rem;font-weight:800;color:#ff8a80;margin-bottom:0.5rem;}
   .mail-btn{display:flex;align-items:center;justify-content:center;gap:0.7rem;background:transparent;color:#00d4ff;border:1px solid #00d4ff;padding:0.85rem;border-radius:50px;font-weight:800;font-size:1rem;text-decoration:none;margin-top:0.8rem;cursor:pointer;width:100%;font-family:'Inter',sans-serif;}
   .retry-btn{margin-top:1rem;}
+  /* v3: feedback / review fields (shown only for "Share Feedback / Review") */
+  .fb-fields{display:none;}
+  .fb-fields.show{display:block;}
+  .stars{display:flex;gap:0.35rem;}
+  .stars input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
+  .stars label{display:inline-block;margin:0;font-size:2rem;line-height:1;color:#2a3b5c;cursor:pointer;transition:color 0.15s,transform 0.1s;}
+  .stars label.on{color:#ffd600;}
+  .stars label:hover{transform:scale(1.12);}
+  .stars input:focus-visible + label{outline:2px solid #00d4ff;outline-offset:3px;border-radius:4px;}
+  .star-text{font-size:0.85rem;color:#8ba3c7;margin-top:0.35rem;min-height:1.2em;}
+  .consent-row{display:flex;gap:0.7rem;align-items:flex-start;background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.15);border-radius:10px;padding:0.8rem 1rem;}
+  .consent-row input{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:#00d4ff;padding:0;}
+  .consent-row label{margin:0;color:#c9d6ea;font-size:0.88rem;line-height:1.5;cursor:pointer;}
+  .opt{opacity:.7;font-weight:400;}
 </style>
 </head>
 <body>
@@ -110,12 +139,38 @@
         <option value="Payment Issue">💰 Payment Issue — paid but no access</option>
         <option value="Upgrade Request">⭐ Upgrade Request — want to upgrade plan</option>
         <option value="Feature Request">💡 Feature Request — suggest an improvement</option>
+        <option value="Share Feedback / Review">⭐ Share Feedback / Review</option>
         <option value="Other">🔹 Other</option>
       </select>
     </div>
 
+    <!-- v3: feedback / review fields, shown only when Issue Type = "Share Feedback / Review" -->
+    <div class="fb-fields" id="fbFields">
+      <div class="form-group">
+        <label id="ratingLabel">Your rating <span style="color:#ff8a80">*</span></label>
+        <div class="stars" role="radiogroup" aria-labelledby="ratingLabel" id="stars">
+          <input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star" aria-label="1 star">★</label>
+          <input type="radio" name="rating" id="star2" value="2"><label for="star2" title="2 stars" aria-label="2 stars">★</label>
+          <input type="radio" name="rating" id="star3" value="3"><label for="star3" title="3 stars" aria-label="3 stars">★</label>
+          <input type="radio" name="rating" id="star4" value="4"><label for="star4" title="4 stars" aria-label="4 stars">★</label>
+          <input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars" aria-label="5 stars">★</label>
+        </div>
+        <div class="star-text" id="starText">Tap a star to rate RecoSuite</div>
+      </div>
+      <div class="form-group">
+        <label for="displayName">Your name &amp; role/company (as you want it shown) <span class="opt">(optional)</span></label>
+        <input type="text" id="displayName" maxlength="100" placeholder="e.g. Priya S., Ops Manager, ABC Finance">
+      </div>
+      <div class="form-group">
+        <div class="consent-row">
+          <input type="checkbox" id="fbConsent">
+          <label for="fbConsent">You can show my feedback on the RecoSuite website with this name/role</label>
+        </div>
+      </div>
+    </div>
+
     <div class="form-group">
-      <label>Describe your issue</label>
+      <label id="descLabel" for="issueDesc">Describe your issue</label>
       <textarea id="issueDesc" placeholder="Please describe what happened, what you expected, and any error messages you saw..."></textarea>
     </div>
 
@@ -150,7 +205,7 @@
 
   <div class="success-box" id="successBox">
     <div class="success-icon">✅</div>
-    <div class="success-title">Ticket Submitted!</div>
+    <div class="success-title" id="successTitle">Ticket Submitted!</div>
     <div class="success-msg">
       Your Issue ID is:<br>
       <div class="issue-id-highlight" id="successIssueId"></div><br>
@@ -179,7 +234,9 @@
   <p>Built with ❤️ by <strong>Aarohi Sharma</strong> — Finance Ops Professional</p>
   <p style="margin-top:0.5rem;">
     <a href="index.html">🏠 Home</a> &nbsp;|&nbsp;
-    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank">🔗 Try Free Demo</a>
+    <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank">🔗 Try Free Demo</a> &nbsp;|&nbsp;
+    <a href="support.html?type=feedback">⭐ Share Feedback</a> &nbsp;|&nbsp;
+    <a href="privacy.html">🔒 Privacy</a>
   </p>
   <p style="margin-top:1rem;font-size:0.75rem;color:rgba(139,163,199,0.5);">© 2026 RecoSuite. All rights reserved.</p>
 </footer>
@@ -220,11 +277,47 @@
     return `${browser}${b[2] ? " " + b[2] : ""} / ${os}${/Mobi/.test(ua) ? " (mobile)" : ""}`.slice(0, 80);
   }
 
+  // v3: "Share Feedback / Review" type (value must match FEEDBACK_TYPE in Code.gs)
+  const FEEDBACK_TYPE = "Share Feedback / Review";
+  const STAR_TEXT = ["Tap a star to rate RecoSuite", "1/5 — Poor", "2/5 — Okay", "3/5 — Good", "4/5 — Very good", "5/5 — Excellent!"];
+  const DESC_TEXT = {
+    issue:    { label: "Describe your issue", ph: "Please describe what happened, what you expected, and any error messages you saw..." },
+    feedback: { label: "Your feedback", ph: "What do you like about RecoSuite? Which reco do you use it for, and how much time does it save you? Anything we should improve?" }
+  };
+  function isFeedback() { return $('issueType').value === FEEDBACK_TYPE; }
+  function selectedRating() { const r = document.querySelector('input[name="rating"]:checked'); return r ? parseInt(r.value, 10) : 0; }
+  function paintStars() {
+    const n = selectedRating();
+    document.querySelectorAll('#stars label').forEach((l, i) => l.classList.toggle('on', i < n));
+    $('starText').textContent = STAR_TEXT[n];
+    if (n && $('formMsg').textContent.indexOf('star rating') >= 0) showMsg('');
+  }
+  function submitLabel() { return isFeedback() ? "⭐ Submit Feedback" : "📨 Submit Ticket"; }
+  function updateTypeFields() {
+    const fb = isFeedback();
+    $('fbFields').classList.toggle('show', fb);
+    const d = fb ? DESC_TEXT.feedback : DESC_TEXT.issue;
+    $('descLabel').textContent = d.label;
+    $('issueDesc').placeholder = d.ph;
+    if (!$('submitBtn').disabled) $('submitBtn').textContent = submitLabel();
+  }
+  $('issueType').addEventListener('change', updateTypeFields);
+  document.querySelectorAll('input[name="rating"]').forEach(r => r.addEventListener('change', paintStars));
+  // deep link: support.html?type=feedback preselects "Share Feedback / Review"
+  try {
+    if ((new URLSearchParams(location.search).get('type') || '').toLowerCase() === 'feedback') $('issueType').value = FEEDBACK_TYPE;
+  } catch (e) {}
+  updateTypeFields();
+
   function readForm() {
+    const fb = isFeedback();
     return {
       email: $('userEmail').value.trim(),
       type:  $('issueType').value,
-      desc:  $('issueDesc').value.trim()
+      desc:  $('issueDesc').value.trim(),
+      rating:  fb ? selectedRating() : 0,
+      name:    fb ? $('displayName').value.trim().slice(0, 100) : "",
+      consent: fb ? ($('fbConsent').checked ? "Yes" : "No") : ""
     };
   }
 
@@ -234,12 +327,14 @@
     sending = on;
     const btn = $('submitBtn');
     btn.disabled = on;
-    btn.textContent = on ? "⏳ Sending your ticket…" : "📨 Submit Ticket";
+    btn.textContent = on ? (isFeedback() ? "⏳ Sending your feedback…" : "⏳ Sending your ticket…") : submitLabel();
   }
 
   function fallbackText(f) {
+    const fb = f.type === FEEDBACK_TYPE
+      ? `Rating: ${f.rating ? f.rating + "/5" : "-"}\nName & role: ${f.name || "-"}\nOK to show on website: ${f.consent || "No"}\n` : "";
     return `RecoSuite Support Request\nIssue ID: ${issueId}\nEmail: ${f.email || "-"}\n` +
-           `Issue Type: ${f.type || "-"}\n\nDescription:\n${f.desc || "-"}`;
+           `Issue Type: ${f.type || "-"}\n${fb}\nDescription:\n${f.desc || "-"}`;
   }
 
   function openEmailFallback() {
@@ -254,6 +349,7 @@
     $('errorBox').classList.remove('show');
     $('successIssueId').textContent = issueId;
     $('successEmail').textContent = email;
+    if (isFeedback()) $('successTitle').textContent = "Thank you for your feedback! 🙏";
     $('successBox').classList.add('show');
   }
 
@@ -275,7 +371,8 @@
     const f = readForm();
     if (!f.email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email)) { showMsg('Please enter a valid email address.'); $('userEmail').focus(); return; }
     if (!f.type)  { showMsg('Please select an issue type.'); $('issueType').focus(); return; }
-    if (f.desc.length < 10) { showMsg('Please describe your issue (at least a few words).'); $('issueDesc').focus(); return; }
+    if (f.type === FEEDBACK_TYPE && !(f.rating >= 1 && f.rating <= 5)) { showMsg('Please choose a star rating (1 to 5).'); $('star1').focus(); return; }
+    if (f.desc.length < 10) { showMsg(f.type === FEEDBACK_TYPE ? 'Please write your feedback (at least a few words).' : 'Please describe your issue (at least a few words).'); $('issueDesc').focus(); return; }
     if (f.desc.length > 5000) { showMsg('Please keep the description under 5,000 characters.'); $('issueDesc').focus(); return; }
 
     const elapsed = Date.now() - pageLoadedAt;
@@ -293,6 +390,11 @@
       pageTimestamp: new Date(pageLoadedAt).toISOString(), submittedAt: new Date().toISOString(),
       elapsedMs: String(elapsed), userAgent: shortUserAgent(), website: $('website').value
     });
+    if (f.type === FEEDBACK_TYPE) {                          // v3: extra fields only for feedback
+      body.append('rating', String(f.rating));
+      body.append('display_name', f.name);
+      body.append('consent', f.consent);
+    }
 
     setSending(true);
     const ctrl = new AbortController();
