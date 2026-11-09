@@ -158,13 +158,52 @@
     .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; padding: 1.75rem 1rem; }
     .payment-box { padding: 2rem 1.25rem; }
   }
+
+  /* ── v1.13 sticky nav + mobile menu ── */
+  html { scroll-behavior: smooth; }
+  :root { --nav-h: 64px; }
+  section, #login { scroll-margin-top: calc(var(--nav-h) + 12px); }
+  nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.7rem 1.5rem; border-bottom: 1px solid var(--border); background: rgba(10,22,40,0.95); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); min-height: var(--nav-h); box-sizing: border-box; }
+  .nav-logo { font-size: 1.35rem; font-weight: 800; color: var(--cyan); letter-spacing: -0.5px; text-decoration: none; flex-shrink: 0; }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; align-items: center; gap: 0.15rem 1rem; flex-wrap: wrap; justify-content: flex-end; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 600; padding: 0.35rem 0.2rem; white-space: nowrap; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a:focus { color: var(--cyan); }
+  .nav-cta { background: var(--cyan); color: var(--navy) !important; padding: 0.5rem 1.15rem !important; border-radius: 50px; font-weight: 700; font-size: 0.88rem; text-decoration: none; }
+  .nav-cta:hover { filter: brightness(1.05); color: var(--navy) !important; }
+  .nav-toggle { display: none; background: transparent; border: 1.5px solid rgba(0,212,255,0.35); color: var(--cyan); border-radius: 10px; width: 42px; height: 42px; cursor: pointer; font-size: 1.25rem; align-items: center; justify-content: center; flex-shrink: 0; }
+  .nav-clear { color: rgba(0,212,255,0.75); font-size: 0.8rem; text-decoration: underline; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; }
+  .nav-clear:hover { color: var(--cyan); }
+  .login-clear-wrap { min-height: 1.1rem; }
+  @media (max-width: 900px) {
+    .nav-toggle { display: inline-flex; }
+    .nav-links {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: rgba(10,22,40,0.98); border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1rem 1rem; box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 0.75rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); white-space: normal; }
+    .nav-links .nav-cta { text-align: center; margin-top: 0.5rem; border-bottom: none; }
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">Reco<span>Suite</span></div>
-  <a href="#payment" class="nav-cta" onclick="trackEvent('click', 'Nav Subscribe Now')">Subscribe Now →</a>
+<nav id="topnav" aria-label="Main">
+  <a href="#" class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">Reco<span>Suite</span></a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#login" data-nav>Login</a>
+    <a href="#demo-video" data-nav>Demo</a>
+    <a href="#features" data-nav>Features</a>
+    <a href="#how-it-works" data-nav>How it works</a>
+    <a href="#saved-templates" data-nav>Templates</a>
+    <a href="#plans" data-nav>Pricing</a>
+    <a href="support.html" data-nav>Contact</a>
+    <a href="#payment" class="nav-cta" onclick="trackEvent('click', 'Nav Subscribe Now')">Subscribe Now →</a>
+  </div>
 </nav>
 
 <div class="hero">
@@ -175,16 +214,91 @@
     <a href="#payment" class="btn-primary" onclick="trackEvent('click', 'Hero Subscribe Now')">📲 Subscribe Now</a>
     <a href="https://recosuite-app.streamlit.app/?email=demo@recosuite.com&pin=1000" target="_blank" class="btn-secondary" onclick="trackEvent('click', 'Try Free Demo')">▶ Try Free Demo</a>
   </div>
-  <div style="margin-top:0.9rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;"><div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;"><input type="email" id="subscriberEmail" placeholder="📧 Your registered Gmail..." onkeydown="if(event.key==='Enter') openTool()" style="padding:0.7rem 1.2rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:240px;outline:none;"><input type="password" id="subscriberPin" placeholder="🔐 PIN" maxlength="6" onkeydown="if(event.key==='Enter') openTool()" style="padding:0.7rem 1rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:100px;outline:none;"><button onclick="openTool()" style="background:rgba(0,212,255,0.15);border:1.5px solid rgba(0,212,255,0.4);color:#00d4ff;padding:0.7rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.9rem;cursor:pointer;">🔑 Open Tool →</button></div><p style="color:rgba(255,255,255,0.5);font-size:0.85rem;">Already subscribed? Enter your Gmail + PIN to access your tool.</p><p style="color:rgba(255,255,255,0.5);font-size:0.85rem;">⏳ Pehli baar khulne mein 30-60 sec lag sakte hain — agar "app has gone to sleep" dikhe toh wake-up button dabao aur thoda wait karo.</p></div>
+  <div id="login" style="margin-top:0.9rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;align-items:center;">
+      <input type="email" id="subscriberEmail" name="email" autocomplete="email" inputmode="email" placeholder="📧 Your registered Gmail..." onkeydown="if(event.key==='Enter') openTool()" style="padding:0.7rem 1.2rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:240px;outline:none;">
+      <input type="password" id="subscriberPin" name="pin" autocomplete="current-password" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="🔐 PIN" onkeydown="if(event.key==='Enter') openTool()" style="padding:0.7rem 1rem;border-radius:50px;border:1.5px solid rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);color:white;font-size:0.9rem;width:100px;outline:none;">
+      <button type="button" onclick="openTool()" style="background:rgba(0,212,255,0.15);border:1.5px solid rgba(0,212,255,0.4);color:#00d4ff;padding:0.7rem 1.5rem;border-radius:50px;font-weight:700;font-size:0.9rem;cursor:pointer;">🔑 Open Tool →</button>
+    </div>
+    <div class="login-clear-wrap"><button type="button" id="clearSavedEmail" class="nav-clear" style="display:none;" onclick="clearSavedEmail()">Not you? Clear saved email</button></div>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;">Already subscribed? Enter your Gmail + PIN to access your tool. Email save ho jayega — PIN kabhi save nahi hota.</p>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;">⏳ Pehli baar khulne mein 30-60 sec lag sakte hain — agar "app has gone to sleep" dikhe toh wake-up button dabao aur thoda wait karo.</p>
+  </div>
   <script>
+  var RECO_EMAIL_KEY = 'recosuite_email';
+
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function updateClearLink() {
+    var btn = document.getElementById('clearSavedEmail');
+    var emailEl = document.getElementById('subscriberEmail');
+    if (!btn || !emailEl) return;
+    var saved = '';
+    try { saved = localStorage.getItem(RECO_EMAIL_KEY) || ''; } catch (e) {}
+    btn.style.display = saved ? 'inline' : 'none';
+  }
+
+  function clearSavedEmail() {
+    try { localStorage.removeItem(RECO_EMAIL_KEY); } catch (e) {}
+    var emailEl = document.getElementById('subscriberEmail');
+    if (emailEl) emailEl.value = '';
+    updateClearLink();
+    trackEvent('click', 'Clear Saved Email');
+  }
+
+  function prefillSavedEmail() {
+    var emailEl = document.getElementById('subscriberEmail');
+    if (!emailEl) return;
+    try {
+      var saved = localStorage.getItem(RECO_EMAIL_KEY) || '';
+      if (saved && isValidEmail(saved)) emailEl.value = saved;
+    } catch (e) {}
+    updateClearLink();
+  }
+
   function openTool() {
     var email = document.getElementById('subscriberEmail').value.trim();
     var pin   = document.getElementById('subscriberPin').value.trim();
     if (!email) { alert('Please enter your registered Gmail address.'); return; }
+    if (!isValidEmail(email)) { alert('Please enter a valid Gmail / email address.'); return; }
     if (!pin)   { alert('Please enter your PIN.'); return; }
+    // Email yaad rakhna — PIN kabhi localStorage mein mat daalo
+    try { localStorage.setItem(RECO_EMAIL_KEY, email); } catch (e) {}
+    try { localStorage.removeItem('recosuite_pin'); localStorage.removeItem('pin'); } catch (e) {}
+    updateClearLink();
     trackEvent('click', 'Open My Tool');
+    // Same as before: app reads email + pin from the query string (PIN is not stored on this site)
     window.open('https://recosuite-app.streamlit.app/?email=' + encodeURIComponent(email) + '&pin=' + encodeURIComponent(pin), '_blank');
   }
+
+  function setupNav() {
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    if (!toggle || !links) return;
+    function closeMenu() {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+    }
+    function openMenu() {
+      links.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+    }
+    toggle.addEventListener('click', function () {
+      if (links.classList.contains('open')) closeMenu(); else openMenu();
+    });
+    links.querySelectorAll('a[data-nav], a.nav-cta').forEach(function (a) {
+      a.addEventListener('click', function () { closeMenu(); });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    prefillSavedEmail();
+    setupNav();
+  });
   </script>
 
 </div>
@@ -257,7 +371,7 @@
   </div>
 </section>
 
-<section style="background: rgba(0,212,255,0.03); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section id="features" style="background: rgba(0,212,255,0.03); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="container">
     <div class="section-tag">✅ RecoSuite Features</div>
     <h2 class="section-title">Jo kaam ghante leta tha,<br>ab 2 minute mein</h2>
@@ -273,7 +387,7 @@
   </div>
 </section>
 
-<section>
+<section id="how-it-works">
   <div class="container">
     <div class="section-tag">🛠 How It Works</div>
     <h2 class="section-title">4 steps — bas itna hi</h2>
